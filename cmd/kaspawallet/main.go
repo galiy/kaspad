@@ -40,6 +40,7 @@ func rpcRetAny(w http.ResponseWriter, r *http.Request, rObj any) {
 func rpcRetAll(w http.ResponseWriter, r *http.Request) {
 	var aMsg any
 	var err error
+
 	switch r.URL.Path {
 	case "/SendMoney":
 		sWallet := r.URL.Query().Get("wallet")
@@ -139,6 +140,11 @@ func rpcRetAll(w http.ResponseWriter, r *http.Request) {
 				Result:   0,
 				TxIds:    respIDs,
 				ErrorMsg: "",
+			}
+		} else {
+			aMsg = &hRpcResult{
+				Result:   1,
+				ErrorMsg: err.Error(),
 			}
 		}
 
