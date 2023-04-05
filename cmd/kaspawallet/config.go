@@ -290,6 +290,12 @@ func parseCommandLine() (subCommand string, config interface{}) {
 			printErrorAndExit(err)
 		}
 		config = startDaemonConf
+
+		sconf = &sendConfig{DaemonAddress: defaultListen}
+		err = sconf.ResolveNetwork(parser)
+		if err != nil {
+			printErrorAndExit(err)
+		}
 	}
 
 	return parser.Command.Active.Name, config
