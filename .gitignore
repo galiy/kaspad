@@ -60,3 +60,5 @@ coverage.txt
 
 testdbs/
 coverage.tmp
+cmd/kaspawallet/kaspawallet
+cmd/kaspawallet/kaspa-wallet.sh
